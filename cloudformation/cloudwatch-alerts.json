@@ -1,0 +1,19 @@
+"TestLambdaErrorsAlarmHigh": {
+  "Type" : "AWS::CloudWatch::Alarm",
+  "Properties" : {
+    "AlarmName" : "test-lambda-errors-high",
+    "AlarmDescription" : "Alert if Lambda errors rise",
+    "AlarmActions" : [ { "Ref" : "TestAlertsSNSTopic" } ],
+    "MetricName" : "Errors",
+    "Namespace" : "AWS/Lambda",
+    "Statistic" : "Sum",
+    "Period" : "300",
+    "EvaluationPeriods": "1",
+    "Threshold" : "0",
+    "ComparisonOperator" : "GreaterThanThreshold",
+    "Dimensions" : [ {
+      "Name" : "FunctionName",
+      "Value" : {"Ref": "LambdaFunction"}
+    }]
+  }
+}
