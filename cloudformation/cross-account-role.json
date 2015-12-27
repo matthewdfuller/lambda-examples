@@ -1,0 +1,8 @@
+"CrossAccountLambdaRolePermissions" : {
+  "Type": "AWS::Lambda::Permission",
+  "Properties": {
+    "FunctionName" : {"Fn::GetAtt" : ["LambdaFunction","Arn"]},
+    "Action": "lambda:InvokeFunction",
+    "Principal": "arn:aws:iam::0123456789012:role/role-name"
+  }
+}
